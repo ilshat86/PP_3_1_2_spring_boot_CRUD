@@ -1,8 +1,15 @@
 package ru.isi.crud_sb.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import ru.isi.crud_sb.model.User;
 
-public interface UserDao extends JpaRepository<User, Long> {
+import java.util.List;
 
+public interface UserDao {
+    void save(User user);
+
+    User getReferenceById(Long id);
+
+    void deleteById(Long id);
+
+    List<User> findAll();
 }
