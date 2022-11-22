@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void update(Long id, User user) {
         User userForUpdate = getUser(id);
         userForUpdate.setName(user.getName());
