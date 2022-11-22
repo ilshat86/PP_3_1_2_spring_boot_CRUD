@@ -1,12 +1,14 @@
 package ru.isi.crud_sb.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.isi.crud_sb.dao.UserDao;
 import ru.isi.crud_sb.model.User;
 
 import java.util.List;
 
 @Service
+@Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
 
@@ -15,6 +17,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void save(User user) {
         userDao.save(user);
     }
@@ -25,6 +28,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void delete(Long id) {
         userDao.deleteById(id);
     }
